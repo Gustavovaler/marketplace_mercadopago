@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('/utils/{provincia}', 'utilsController@get_localidades');
+
 Route::get('/', function () {
     return view('welcome');
 });

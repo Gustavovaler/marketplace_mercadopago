@@ -51,22 +51,32 @@
                                 @enderror
                             </div>
                         </div>
-                        <form action="" method="post">
-                            <!-- -------------- Selector de provincias -->
-                            <select name="provincias" id="provincias">
-                                <option disabled selected>Selecciona Provincia</option>
-                                @foreach ($provincias as $provincia)
-                                <option value="{{$provincia->nombre}}">{{$provincia->nombre}}</option>
-                                @endforeach
-                            </select>
-                        
-                            <!-- ------------------ Selector de Localidades -->
-                            <select name="localidades" id="localidades">
-                                
-                            </select>
-                        
-                        </form>
-
+                        <!-- SELECT  -->
+                        <div class="form-group row">
+                            <form action="" method="post">
+                                <!-- -------------- Selector de provincias -->
+                                <label for="" class="col-md-4 col-form-label text-md-right">Provincia</label>
+                                <div class="col-md-6">
+                                    <select name="provincia" id="provincias" class="form-control">
+                                        <option disabled selected>Selecciona Provincia</option>
+                                        @foreach ($provincias as $provincia)
+                                        <option value="{{$provincia->nombre}}">{{$provincia->nombre}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <!-- ------------------ Selector de Localidades -->
+                                <label for="" class="col-md-4 col-form-label text-md-right">Localidad</label>
+                                <div class="col-md-6">
+                                    <select name="localidad" id="localidades" class="form-control">
+                                        
+                                    </select>
+                                </div>
+                            
+                            </form>
+                        </div>
+                        <!-- END SELECT  -->
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -102,4 +112,23 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    window.onload = function(){
+        
+        $("#localidades").hide();
+        $("#provincias").change(function(){
+            $.ajax({        
+                // le pido a la url '/utils/provincia' el liostado de loclaidades
+                url: "/utils/" + $(this).val(),
+                method: 'GET',
+                success: function(data) {
+                    $('#localidades').html(data.html+"<option value='Otro'>Otro</option>");    
+                    $("#localidades").show();            
+                }
+            });
+        });
+    }
+    </script>
 @endsection
