@@ -38,6 +38,34 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="adress" class="col-md-4 col-form-label text-md-right">Dirección</label>
+
+                            <div class="col-md-6">
+                                <input id="adress" type="text" class="form-control" name="adress" value="{{ old('adress') }}" required autocomplete="adress">
+
+                                @error('adress')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>La dirección debe tener hasta 190 letras o numeros.</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <form action="" method="post">
+                            <!-- -------------- Selector de provincias -->
+                            <select name="provincias" id="provincias">
+                                <option disabled selected>Selecciona Provincia</option>
+                                @foreach ($provincias as $provincia)
+                                <option value="{{$provincia->nombre}}">{{$provincia->nombre}}</option>
+                                @endforeach
+                            </select>
+                        
+                            <!-- ------------------ Selector de Localidades -->
+                            <select name="localidades" id="localidades">
+                                
+                            </select>
+                        
+                        </form>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
