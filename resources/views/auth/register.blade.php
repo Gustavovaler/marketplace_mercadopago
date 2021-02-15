@@ -53,7 +53,7 @@
                         </div>
                         <!-- SELECT  -->
                         <div class="form-group row">
-                            <form action="" method="post">
+                            
                                 <!-- -------------- Selector de provincias -->
                                 <label for="" class="col-md-4 col-form-label text-md-right">Provincia</label>
                                 <div class="col-md-6">
@@ -74,7 +74,7 @@
                                     </select>
                                 </div>
                             
-                            </form>
+                        
                         </div>
                         <!-- END SELECT  -->
                         <div class="form-group row">
